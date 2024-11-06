@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Favoritos - Loja Virtual</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="navbar">
+    <h1 class="logo">Loja Virtual</h1>
+    <div class="menu-icons">
+      <a href="index.html">Home</a>
+    </div>
+  </header>
+
+  <h2>Produtos Favoritos</h2>
+
+  <section class="product-gallery" id="favorite-products">
+    <!-- Os produtos favoritos serão exibidos aqui -->
+  </section>
+
+  <script>
+    // Recupera os favoritos do localStorage
+    const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+
+    // Função para gerar os cartões de produtos favoritos
+    function loadFavorites() {
+      const favoriteProductsContainer = document.getElementById('favorite-products');
+      favoriteProductsContainer.innerHTML = '';
+
+      // Se não houver favoritos, exibe uma mensagem
+      if (favorites.length === 0) {
+        favoriteProductsContainer.innerHTML = '<p>Nenhum produto favorito.</p>';
+        return;
+      }
+
+      // Adiciona cada favorito na galeria de produtos
+      favorites.forEach(productId => {
+        const productCard = document.createElement('div');
+        productCard.classList.add('product-card');
+        productCard.innerHTML = `
+          <img src="${productId}.png" alt="${productId}">
+          <h2>${productId}</h2>
+          <p>R$ 59,99</p>
+        `;
+        favoriteProductsContainer.appendChild(productCard);
+      });
+    }
+
+    // Carrega os produtos favoritos quando a página for carregada
+    loadFavorites();
+  </script>
+</body>
+</html>
