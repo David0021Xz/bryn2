@@ -1,0 +1,447 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #121212;
+  color: #fff;
+}
+
+/* Barra de Navegação */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  background-color: #000;
+}
+
+.logo {
+  font-size: 1.5em;
+  color: #fff;
+}
+
+.menu-icons {
+  display: flex;
+  align-items: center;
+}
+
+.menu-btn {
+  font-size: 1.5em;
+  color: #fff;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.favorite-btn {
+  font-size: 1.5em;
+  color: #fff;
+  margin-left: 10px;
+  text-decoration: none;
+  z-index: 1001;
+}
+
+.favorite-btn:hover {
+  color: #ff0000;
+}
+
+/* Gaveta de Menu */
+.drawer {
+  display: none;
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background-color: #333;
+  width: 200px;
+  padding: 10px;
+  z-index: 1000;
+}
+
+.drawer.open {
+  display: block;
+}
+
+.drawer a {
+  display: block;
+  padding: 10px;
+  color: #fff;
+  text-decoration: none;
+  border-bottom: 1px solid #444;
+}
+
+.drawer a:hover {
+  background-color: #555;
+}
+
+/* Carrossel de Categorias */
+.categorias-carrossel {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 10px;
+  scroll-snap-type: x mandatory;
+}
+
+.categorias-carrossel::-webkit-scrollbar {
+  height: 6px;
+}
+
+.categorias-carrossel::-webkit-scrollbar-thumb {
+  background-color: #6a0dad;
+  border-radius: 10px;
+}
+
+.categoria-btn {
+  background-color: transparent;
+  border: 2px solid #6a0dad;
+  color: #6a0dad;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 1em;
+  cursor: pointer;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.categoria-btn:hover {
+  background-color: #6a0dad;
+  color: #fff;
+}
+
+/* Galeria de Produtos */
+.product-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  padding: 20px;
+}
+
+.product-card {
+  position: relative;
+  background-color: #222;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.product-card img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.product-card h2 {
+  font-size: 1.2em;
+  margin: 10px 0;
+}
+
+.product-card p {
+  font-size: 1em;
+  color: #6a0dad;
+  font-weight: bold;
+}
+
+/* Estilos para botão de compra */
+.buy-btn {
+  background-color: #6a0dad;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.buy-btn:hover {
+  background-color: #5b0b9b;
+}
+
+
+/* Ícone de coração com design redondo e estilizado */
+.heart-icon {
+  font-size: 1.8rem;
+  color: transparent;
+  border: 2px solid white;
+  border-radius: 50%; /* Garante que o ícone fique perfeitamente redondo */
+  width: 40px; /* Define altura e largura para manter a proporção circular */
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: transparent;
+  transition: color 0.3s, border-color 0.3s;
+  position: relative;
+}
+
+.heart-icon::before {
+  content: "\f004"; /* Código do ícone de coração do Font Awesome */
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  color: white; /* Coração branco dentro do círculo */
+  font-size: 1rem;
+}
+
+.heart-icon.favorited {
+  color: red;
+  border-color: red;
+}
+
+.heart-icon.favorited::before {
+  color: red; /* Altera a cor do coração para vermelho */
+}
+
+
+.heart-icon.favorited {
+  color: red;
+  border-color: red;
+}
+
+.heart-icon.favorited::before {
+  color: red; /* Altera a cor do coração para vermelho */
+}
+
+/* Container para botão de compra e coração */
+.buy-favorite-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* Media Queries para Responsividade */
+@media (min-width: 600px) {
+  .product-gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 992px) {
+  .product-gallery {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Estilo do Campo de Pesquisa */
+.search-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+  position: relative;
+}
+
+.search-input {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px 15px;
+  font-size: 1em;
+  border: 2px solid #6a0dad;
+  border-radius: 30px;
+  outline: none;
+  background-color: #000;
+  color: #fff;
+}
+
+.search-btn {
+  position: absolute;
+  right: 25px;
+  font-size: 1.2em;
+  color: #6a0dad;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Estilos para alinhar o botão de coração ao lado do botão "Comprar" em telas menores */
+@media (max-width: 600px) {
+  .heart-icon {
+    font-size: 1.5rem;
+    padding: 5px;
+  }
+}
+
+/* Estilos de layout adicionais para tablets */
+@media (max-width: 992px) {
+  .heart-icon {
+    font-size: 1.6rem;
+  }
+}
+
+/* Estilo para o botão flutuante do WhatsApp */
+.whatsapp-button {
+  position: fixed;
+  bottom: 60px;  /* Aumente ou diminua esse valor para ajustar a altura */
+  right: 20px;   /* Aumente ou diminua esse valor para ajustar a posição lateral */
+  width: 60px;
+  height: 60px;
+  background-color: #25d366;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  transition: transform 0.3s ease;
+}
+
+.whatsapp-button:hover {
+  transform: scale(1.1);
+}
+
+.whatsapp-button img {
+  width: 60%;
+  height: 60%;
+}
+
+/* Responsivo: Ajuste do botão em telas menores */
+@media (max-width: 768px) {
+  .whatsapp-button {
+    width: 50px;
+    height: 50px;
+    bottom: 50px;  /* Ajuste para mover mais para cima ou para baixo */
+    right: 15px;
+  }
+
+  .whatsapp-button img {
+    width: 55%;
+    height: 55%;
+  }
+}
+
+@media (max-width: 480px) {
+  .whatsapp-button {
+    width: 45px;
+    height: 45px;
+    bottom: 40px;  /* Ajuste para mover mais para cima ou para baixo */
+    right: 10px;
+  }
+
+  .whatsapp-button img {
+    width: 50%;
+    height: 50%;
+  }
+}
+
+/* Carrossel */
+.carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 15px;
+    margin: 20px;
+    position: relative; /* Necessário para posicionar os botões */
+    overflow: hidden; /* Esconde as imagens fora do container */
+}
+
+/* Carrossel */
+.carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 15px;
+    margin: 20px auto; /* Centraliza o carrossel na página */
+    position: relative;
+    overflow: hidden;
+    max-width: 1000px; /* Tamanho fixo para o carrossel, ajuste conforme necessário */
+    width: 100%; /* Para o carrossel ocupar 100% do espaço disponível até o limite */
+}
+
+/* Container das imagens do carrossel */
+.carousel-images {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+/* Ajuste o tamanho das imagens do carrossel */
+.carousel img {
+    width: 100%; /* Faz a imagem ocupar 100% do container */
+    max-width: 100%; /* A imagem não ultrapassa o limite do container */
+    height: auto; /* Mantém a proporção original da imagem */
+    border-radius: 15px;
+    object-fit: cover; /* Faz com que a imagem cubra o container sem distorção */
+}
+
+/* Botões de navegação */
+.prev-btn, .next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-size: 24px;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
+
+.prev-btn:hover, .next-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+
+
+
+/* Estilo para o pop-up */
+.favorite-popup {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.favorite-popup.visible {
+  display: block;
+  opacity: 1;
+}
+
+
+
+/* Estilo para a imagem acima da navbar */
+.logo-container {
+  text-align: center;
+  background-color: #000000;  /* Altere para a cor desejada */
+}
+
+.logo-image {
+  width: 100%;
+  max-width: 300px; /* Ajuste conforme necessário */
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+
+
